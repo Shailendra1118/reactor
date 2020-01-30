@@ -2,6 +2,7 @@
 
 
 * brew install mongodb-community@4.2
+(Used version in TEST MongoDB server version: 3.6.16)
 
 
 In addition to the binaries, the install creates:
