@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Divide" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-11-22T12:10:44" hostname="PU-SYADAV.local" time="0.001">
+  <properties/>
+  <testcase name="testIt" classname="Divide" time="0.001"/>
+  <system-out><![CDATA[a/:0
+b%:1
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

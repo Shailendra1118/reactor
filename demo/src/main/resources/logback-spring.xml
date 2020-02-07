@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <contextName>demo-application</contextName>
+  <springProperty scope="context" name="app.name" source="info.build.name"/>
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+  <conversionRule conversionWord="ctx"
+    converterClass="com.appdirect.itg.platform.logback.ContextConverter"/>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <Pattern>
+        %clr(%date{ISO8601}){faint}[app=%contextName][traceId=%X{X-B3-TraceId}][spanId=%X{X-B3-SpanId}][thread=%thread][level=%clr(%level)][logger=%clr(%logger{1}){cyan}]: %message%n
+      </Pattern>
+    </layout>
+  </appender>
+  <!--%clr(%date{ISO8601}){faint} [ app=%contextName ] [ traceId=%X{X-B3-TraceId} ] [ spanId=%X{X-B3-SpanId} ] [ thread=%thread ][ level=%clr(%level) ][ logger=%clr(%logger{1}){cyan} ]: %message%n-->
+
+  <!--<logger name="com.appdirect.checkout.tax.api.exception" level="debug" additivity="false">-->
+  <!--<appender-ref ref="STDOUT"/>-->
+  <!--</logger>-->
+
+  <!-- Will log all messages itg.log. -->
+  <appender name="itg-composition" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>/tmp/logs/itg-composition.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!--Rollover every day or when the size reaches 50MB. Zip archived logs-->
+      <fileNamePattern>/tmp/logs/itg-composition.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+      <timeBasedFileNamingAndTriggeringPolicy
+        class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+        <!-- Whenever the file size reaches 50MB -->
+        <maxFileSize>50MB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+      <!--Number of past periods (in our case, days) for which the log history is kept -->
+      <maxHistory>1</maxHistory>
+    </rollingPolicy>
+    <encoder>
+      <pattern>
+        %clr(%date{ISO8601}){faint}[traceId=%X{X-B3-TraceId}][spanId=%X{X-B3-SpanId}][thread=%thread][level=%clr(%level)][logger=%clr(%logger{1}){cyan}]: %message%n
+      </pattern>
+    </encoder>
+  </appender>
+
+  <root level="INFO">
+    <appender-ref ref="STDOUT"/>
+  </root>
+
+
+  <!--<logger name="com.appdirect" level="debug" additivity="false">-->
+  <!--<appender-ref ref="ITG"/>-->
+  <!--</logger>-->
+
+</configuration>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestBasic" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-11-22T12:10:44" hostname="PU-SYADAV.local" time="0.001">
+  <properties/>
+  <testcase name="testString" classname="TestBasic" time="0.001"/>
+  <system-out><![CDATA[Val: 7
+nc: 0
+Val: 0
+nc: 1
+Val: 8
+nc: 0
+7->0->8->8->null
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
