@@ -17,3 +17,12 @@ To run MongoDB (i.e. the mongod process) as a macOS service, issue the following
 ```
 brew services start mongodb-community@4.2
 ```
+
+
+# Docker commands
+
+
+# Kubernetes
+
+
+
