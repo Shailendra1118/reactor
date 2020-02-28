@@ -124,6 +124,21 @@ public class DemoApplicationTests {
 		TestEnum(String value){
 			this.value = value;
 		}
+
+		public static TestEnum fromValue(String text) {
+			for (TestEnum b : TestEnum.values()) {
+				if (String.valueOf(b.value).equals(text)) {
+					return b;
+				}
+			}
+			return null;
+		}
+	}
+
+	@Test
+	public void testNull(){
+		TestEnum e = TestEnum.fromValue("DFF");
+		System.out.println("TEST: "+e);
 	}
 
 

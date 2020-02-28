@@ -1,9 +1,12 @@
 package com.example.demo;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import org.junit.Test;
+import reactor.core.publisher.Mono;
 
 import javax.swing.event.ChangeEvent;
 import java.util.function.IntBinaryOperator;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class BasicFunc {
@@ -43,6 +46,32 @@ public class BasicFunc {
         System.out.println(a.length);
         System.out.println(a[0].length);
     }
+
+
+    private Predicate<String> refundInvoiceFilter = (str) -> {
+      if(str.equals("toPass"))
+          return true;
+      else return false;
+
+    };
+
+    @Test
+    public void testFunc(){
+        Mono.just("toPassl")
+                .flatMap(str -> {
+                    System.out.println("Rec - "+str);
+                    return Mono.just(str);
+                }).filter(str -> refundInvoiceFilter.test(str))
+                .doOnDiscard(String.class, str -> System.out.println("first discarded"))
+                .flatMap(str -> {
+                    System.out.println("post filter");
+                    return Mono.just(str);
+                })
+                .doOnDiscard(String.class, str -> System.out.println("discarded"))
+                .subscribe(s -> System.out.println("pass"), f -> System.out.println("fail"));
+    }
+
+
 
 
 }
