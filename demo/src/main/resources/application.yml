@@ -22,3 +22,25 @@ spring:
       name: itg-composition
     sender:
       type: web
+
+# Expose management beans
+management:
+  endpoints:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+# project info
+info:
+  build:
+    name: 'DEMO'
+    version: 'Beta'
+  environment: 'Local'

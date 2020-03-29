@@ -3,9 +3,9 @@ package basic.example;
 public class Basics {
 
     public static void main(String[] args) {
-        String str = "abc";
-        //recPermute("", str);
-        recFixedOne(str.toCharArray(), 0, str.length()-1);
+        String str = "aab";
+        recPermute("", str);
+        //recFixedOne(str.toCharArray(), 0, str.length()-1);
     }
 
     private static void recFixedOne(char arr[], int s, int e) {
