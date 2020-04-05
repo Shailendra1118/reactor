@@ -31,6 +31,7 @@ dependencies {
 	testCompileOnly "org.projectlombok:lombok"
 	testAnnotationProcessor "org.projectlombok:lombok"
 	implementation 'org.springframework.cloud:spring-cloud-starter-zipkin:2.1.0.RELEASE'
+	compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.4'
 	dependencies {
 		annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 	}
